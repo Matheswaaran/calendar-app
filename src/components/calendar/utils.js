@@ -35,7 +35,7 @@ const getDatesToAddBefore = (first_day_of_current_month, year, month) => {
       return {
         date: date.getDate(),
         month: date.getMonth(),
-        year: date.getYear(),
+        year: date.getFullYear(),
         day_of_week: date.getDay(),
       };
     });
@@ -49,31 +49,60 @@ const getDatesToAddAfter = (remaining_days_to_add, year, month) => {
       return {
         date: date.getDate(),
         month: date.getMonth(),
-        year: date.getYear(),
+        year: date.getFullYear(),
         day_of_week: date.getDay(),
       };
     });
 };
 
-const renderDaysOfWeek = (day_of_week) => {
-  switch (day_of_week) {
-    case 0:
-      return "sun";
-    case 1:
-      return "mon";
-    case 2:
-      return "tue";
-    case 3:
-      return "wed";
-    case 4:
-      return "thu";
-    case 5:
-      return "fri";
-    case 6:
-      return "sat";
-    default:
-      return null;
-  }
+const getDayOfWeekText = (day_of_week) => {
+  const days = [
+    { full: "sunday", small: "sun" },
+    { full: "monday", small: "mon" },
+    { full: "tuesday", small: "tue" },
+    { full: "wednesday", small: "wed" },
+    { full: "thursday", small: "thu" },
+    { full: "friday", small: "fri" },
+    { full: "saturday", small: "sat" },
+  ];
+  return days[day_of_week];
 };
 
-export { getCalenderDates, renderDaysOfWeek };
+const getMonthText = (month) => {
+  console.log(month);
+  const months = [
+    { full: "January", small: "Jan" },
+    { full: "February", small: "Feb" },
+    { full: "March", small: "Mar" },
+    { full: "April", small: "Apr" },
+    { full: "May", small: "May" },
+    { full: "June", small: "Jun" },
+    { full: "July", small: "Jul" },
+    { full: "August", small: "Aug" },
+    { full: "September", small: "Sept" },
+    { full: "October", small: "Oct" },
+    { full: "November", small: "Nov" },
+    { full: "December", small: "Dec" },
+  ];
+  return months[month];
+};
+
+const getPreviousMonthAndYear = (month, year) => {
+  return month === 0
+    ? { month: 11, year: year - 1 }
+    : { month: month - 1, year };
+};
+
+const getNextMonthAndYear = (month, year) => {
+  return month === 11
+    ? { month: 0, year: year + 1 }
+    : { month: month + 1, year };
+};
+
+export {
+  getCalenderDates,
+  getDayOfWeekText,
+  getMonthText,
+  getPreviousMonthAndYear,
+  getNextMonthAndYear,
+};

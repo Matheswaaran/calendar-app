@@ -40,3 +40,30 @@
 .layout-container .layout-content {
   flex-grow: 1;
 }
+
+.layout-topbar .topbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topbar-content .left-arrow-icon, .topbar-content .right-arrow-icon {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.topbar-content .left-arrow-icon {
+  margin-right: 8px;
+}
+
+.topbar-content .right-arrow-icon {
+  margin-left: 8px;
+}
+
+.layout-topbar .topbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
