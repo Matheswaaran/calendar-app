@@ -1,0 +1,42 @@
+.layout-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-container .layout-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  border-bottom: 1px solid #9EACBE;
+  padding: 0 16px;
+}
+
+.layout-topbar .settings-icon {
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.layout-topbar .app-icon {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.layout-topbar .app-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: bold;
+  color: #4A5367
+}
+
+.layout-container .layout-content {
+  flex-grow: 1;
+}
