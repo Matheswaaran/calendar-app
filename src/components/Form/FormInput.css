@@ -1,0 +1,11 @@
+.form-input-group {
+  display: flex;
+}
+
+.form-input-group label {
+  font-size: 18px;
+}
+
+.form-input-group input {
+  font-size: 24px;
+}
