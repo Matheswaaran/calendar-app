@@ -69,7 +69,6 @@ const getDayOfWeekText = (day_of_week) => {
 };
 
 const getMonthText = (month) => {
-  console.log(month);
   const months = [
     { full: "January", small: "Jan" },
     { full: "February", small: "Feb" },
