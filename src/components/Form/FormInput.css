@@ -1,11 +1,29 @@
 .form-input-group {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .form-input-group label {
   font-size: 18px;
 }
 
-.form-input-group input {
+.form-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input input {
   font-size: 24px;
+}
+
+.form-input .input-error {
+  font-size: 24px;
+  border: 1px solid #F44336;
+}
+
+.form-input .form-error-message {
+  min-height: 32px;
+  color: #F44336;
+  margin-top: 8px;
 }

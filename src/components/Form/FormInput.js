@@ -1,25 +1,35 @@
 import React from "react";
 import "./FormInput.css";
 import PropTypes from "prop-types";
+import { useForm } from "./FormContext";
 
 const FormInput = (props) => {
+  const form = useForm();
+
   return (
     <div className="form-input-group">
       {props.label && <label>{props.label}</label>}
-      {props.textArea ? (
-        <textarea
-          name={props.field}
-          value={props.value}
-          onChange={props.onChange}
-        />
-      ) : (
-        <input
-          name={props.field}
-          type={props.type}
-          value={props.value}
-          onChange={props.onChange}
-        />
-      )}
+      <div className="form-input">
+        {props.textArea ? (
+          <textarea
+            name={props.field}
+            value={props.value || form.formValues[props.field]}
+            onChange={props.onChange || form.handleDefaultOnChange}
+            className={`${form?.errors[props.field] ? "input-error" : ""}`}
+          />
+        ) : (
+          <input
+            name={props.field}
+            type={props.type}
+            value={props.value || form.formValues[props.field]}
+            onChange={props.onChange || form.handleDefaultOnChange}
+            className={`${form?.errors[props.field] ? "input-error" : ""}`}
+          />
+        )}
+        <div className="form-error-message">
+          {form?.errors[props.field] || null}
+        </div>
+      </div>
     </div>
   );
 };
@@ -29,7 +39,7 @@ FormInput.defaultProps = {
   label: "",
   type: "text",
   value: "",
-  onChange: () => {},
+  onChange: undefined,
   textArea: false,
 };
 
