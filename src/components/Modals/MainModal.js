@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./index.css";
 
 const MainModal = (props) => {
@@ -44,6 +45,14 @@ MainModal.defaultProps = {
   closeIcon: <>&times;</>,
   onClose: () => {},
   renderFooter: undefined,
+};
+
+MainModal.propTypes = {
+  title: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
+  closeIcon: PropTypes.element,
+  onClose: PropTypes.func.isRequired,
+  renderFooter: PropTypes.func,
 };
 
 export default MainModal;
