@@ -1,0 +1,26 @@
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.form-actions-create-btn {
+  font-size: 16px;
+  padding: 8px 24px;
+  background-color: #0000FF;
+  border: 1px solid #0000FF;
+  border-radius: 5px;
+  margin-right: 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.form-actions-cancel-btn {
+  font-size: 16px;
+  padding: 8px 24px;
+  background-color: #F44336;
+  border: 1px solid #F44336;
+  border-radius: 5px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
