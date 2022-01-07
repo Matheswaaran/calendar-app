@@ -18,6 +18,11 @@ const Calendar = (props) => {
             {getDayOfWeekText(date.day_of_week).small}
           </span>
           <span>{date.date}</span>
+          <div className="date-render-container">
+            {props.renderDateCell
+              ? props.renderDateCell(new Date(date.year, date.month, date.date))
+              : null}
+          </div>
         </div>
       ))}
     </div>
@@ -27,11 +32,13 @@ const Calendar = (props) => {
 Calendar.defaultProps = {
   month: new Date().getMonth(),
   year: new Date().getFullYear(),
+  renderDateCell: undefined,
 };
 
 Calendar.propTypes = {
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
+  renderDateCell: PropTypes.func,
 };
 
 export default Calendar;
