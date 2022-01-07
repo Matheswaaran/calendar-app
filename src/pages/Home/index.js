@@ -4,16 +4,28 @@ import Calendar from "../../components/calendar";
 import CalendarContext from "../../context/CalendarContext";
 import AddEvent from "./AddEvent";
 import { getCalendarEventsFromLocalStorage } from "../../utils";
+import ViewEvent from "./ViewEvent";
 
 const Home = (props) => {
   const { month, year } = React.useContext(CalendarContext);
   const [isModalOpen, setModalOpen] = React.useState(false);
+  const [isViewModalOpen, setViewModalOpen] = React.useState(false);
   const [selectedEvent, setSelectedEvent] = React.useState(null);
   const [calendarEvents, setCalendarEvents] = React.useState([]);
 
   React.useEffect(() => {
     setCalendarEvents(getCalendarEventsFromLocalStorage());
   }, []);
+
+  const openViewCalendarEventModal = (calendar_event) => {
+    setSelectedEvent(calendar_event);
+    setViewModalOpen(true);
+  };
+
+  const onEditEvent = () => {
+    setViewModalOpen(false);
+    setModalOpen(true);
+  };
 
   const renderEventsInCalendar = (date) => {
     let events_in_date = [];
@@ -41,7 +53,12 @@ const Home = (props) => {
         }}
       >
         {events_in_date.map((calendar_event, i) => (
-          <div key={i}>{calendar_event.title}</div>
+          <div
+            key={i}
+            onClick={() => openViewCalendarEventModal(calendar_event)}
+          >
+            {calendar_event.title}
+          </div>
         ))}
       </div>
     );
@@ -62,6 +79,14 @@ const Home = (props) => {
           open={isModalOpen}
           setOpen={setModalOpen}
           event={selectedEvent}
+        />
+      )}
+      {isViewModalOpen && (
+        <ViewEvent
+          open={isViewModalOpen}
+          setOpen={setViewModalOpen}
+          event={selectedEvent}
+          onEditEvent={() => onEditEvent()}
         />
       )}
     </div>
