@@ -2,24 +2,32 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .form-input-group label {
   font-size: 18px;
+  border-radius: 4px;
+  width: 30%;
+  text-align: right;
+  padding: 4px 16px 0 0;
 }
 
 .form-input {
   display: flex;
   flex-direction: column;
+  width: 60%
 }
 
-.form-input input {
+.form-input input, .form-input textarea {
   font-size: 24px;
+  width: 100%
 }
 
 .form-input .input-error {
   font-size: 24px;
-  border: 1px solid #F44336;
+  border: 2px solid #F44336;
+  border-radius: 4px;
 }
 
 .form-input .form-error-message {
