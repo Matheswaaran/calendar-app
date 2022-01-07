@@ -3,12 +3,17 @@ import PropTypes from "prop-types";
 import "./index.css";
 import MainModal from "../../../components/Modals/MainModal";
 import { Form, FormInput } from "../../../components/Form";
+import {
+  addCalendarEventToLocalStorage,
+  getUtcDateStingFromLocalDateString,
+  getUtcTimeStingFromLocalTimeString,
+} from "../../../utils";
 
 const AddEvent = (props) => {
   let eventFormRef = null;
 
   const [formValues, setFormValues] = React.useState({
-    name: "",
+    title: "",
     description: "",
     location: "",
     start_date: "",
@@ -23,7 +28,7 @@ const AddEvent = (props) => {
       setFormValues({ ...props.event });
     } else {
       setFormValues({
-        name: "",
+        title: "",
         description: "",
         location: "",
         start_date: "",
@@ -35,14 +40,26 @@ const AddEvent = (props) => {
     }
   }, [props.event]);
 
-  const handleSubmit = (formValues) => {
-    console.log(formValues);
+  const handleAddEventFormSubmit = (formValues) => {
+    let start_date_string = `${formValues.start_date} ${formValues.start_time}`;
+    let end_date_string = `${formValues.end_date} ${formValues.end_time}`;
+    let calendar_event = {
+      ...formValues,
+      start_date: getUtcDateStingFromLocalDateString(start_date_string),
+      start_time: getUtcTimeStingFromLocalTimeString(start_date_string),
+      end_date: getUtcDateStingFromLocalDateString(end_date_string),
+      end_time: getUtcTimeStingFromLocalTimeString(end_date_string),
+    };
+    addCalendarEventToLocalStorage(calendar_event);
   };
 
-  const validateFields = (formValues, { setFieldError, setFieldValue }) => {
+  const validateAddEventFormFields = (
+    formValues,
+    { setFieldError, setFieldValue }
+  ) => {
     let errors = {};
-    if (!formValues.name) {
-      errors["name"] = "Required";
+    if (!formValues.title) {
+      errors["title"] = "Required";
     }
     if (!formValues.start_date) {
       errors["start_date"] = "Required";
@@ -55,6 +72,15 @@ const AddEvent = (props) => {
     }
     if (!formValues.end_time) {
       errors["end_time"] = "Required";
+    }
+    if (new Date(formValues.end_date) < new Date(formValues.start_date)) {
+      errors["end_date"] = "End date should be greater than start date";
+    }
+    if (
+      new Date(`${formValues.end_date} ${formValues.end_time}`) <
+      new Date(`${formValues.start_date} ${formValues.start_time}`)
+    ) {
+      errors["end_time"] = "End time should be greater than start time";
     }
     return errors;
   };
@@ -89,13 +115,13 @@ const AddEvent = (props) => {
         <Form
           name="form"
           formRef={(ref) => (eventFormRef = ref)}
-          onSubmit={handleSubmit}
+          onSubmit={handleAddEventFormSubmit}
           initialValues={formValues}
-          onValidateFields={validateFields}
+          onValidateFields={validateAddEventFormFields}
         >
           {() => (
             <React.Fragment>
-              <FormInput field="name" label="Name" />
+              <FormInput field="title" label="Title" />
               <FormInput
                 field="description"
                 label="Description"
