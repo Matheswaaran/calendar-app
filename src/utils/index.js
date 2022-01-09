@@ -7,6 +7,7 @@ const addCalendarEventToLocalStorage = (calendar_event) => {
     { id: new_calendar_event_id, ...calendar_event },
   ];
   setCalendarEventsToLocalStorage(calendar_events);
+  return calendar_events;
 };
 
 const getCalendarEventsFromLocalStorage = () => {
@@ -23,7 +24,23 @@ const setCalendarEventsToLocalStorage = (calendar_events) => {
 };
 
 const updateCalendarEventsInLocalStorage = (calendar_event) => {
-  console.log(calendar_event);
+  let calendar_events = getCalendarEventsFromLocalStorage();
+  let index_of_event = calendar_events.findIndex(
+    (event) => event.id === calendar_event.id
+  );
+  calendar_events[index_of_event] = { ...calendar_event };
+  setCalendarEventsToLocalStorage(calendar_events);
+  return calendar_events;
+};
+
+const removeCalendarEventsFromLocalStorage = (calendar_event) => {
+  let calendar_events = getCalendarEventsFromLocalStorage();
+  let index_of_event = calendar_events.findIndex(
+    (event) => event.id === calendar_event.id
+  );
+  calendar_events.splice(index_of_event, 1);
+  setCalendarEventsToLocalStorage(calendar_events);
+  return calendar_events;
 };
 
 const getUtcDateStingFromLocalDateString = (datetime_string) => {
@@ -67,4 +84,5 @@ export {
   getUtcDateStingFromLocalDateString,
   getLocalDateStringFromUtcDateString,
   getLocalTimeStringFromUTtcTimeString,
+  removeCalendarEventsFromLocalStorage,
 };
