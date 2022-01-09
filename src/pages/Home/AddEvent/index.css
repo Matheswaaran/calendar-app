@@ -1,26 +1,64 @@
 .form-actions {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  padding: 0 18px;
 }
 
 .form-actions-create-btn {
-  font-size: 16px;
-  padding: 8px 24px;
-  background-color: #0000FF;
-  border: 1px solid #0000FF;
-  border-radius: 5px;
+  border: 1px solid #47A1F8;
   margin-right: 8px;
   color: #FFFFFF;
   cursor: pointer;
+  background: #47A1F8;
+  border-radius: 6px;
+  padding: 8px 17px;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
 }
 
 .form-actions-cancel-btn {
-  font-size: 16px;
-  padding: 8px 24px;
-  background-color: #F44336;
-  border: 1px solid #F44336;
-  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1px solid #C0C0C0;
+  border-radius: 6px;
+  margin-right: 8px;
+  color: #000000;
+  cursor: pointer;
+  padding: 8px 17px;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.form-actions-delete-btn {
+  background: #FF3A29;
+  border: 1px solid #FF3A29;
+  border-radius: 6px;
+  margin-right: 8px;
   color: #FFFFFF;
   cursor: pointer;
+  padding: 8px 17px;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.form-multiple-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-multiple-input {
+  width: 48%
 }
