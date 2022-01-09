@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CloseIcon from "../../assets/img/close.svg";
 import "./index.css";
 
 const MainModal = (props) => {
@@ -42,7 +43,7 @@ const MainModal = (props) => {
 MainModal.defaultProps = {
   title: "",
   visible: false,
-  closeIcon: <>&times;</>,
+  closeIcon: <img src={CloseIcon} alt="close modal" />,
   onClose: () => {},
   renderFooter: undefined,
 };
