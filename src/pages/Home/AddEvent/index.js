@@ -4,16 +4,18 @@ import "./index.css";
 import MainModal from "../../../components/Modals/MainModal";
 import { Form, FormInput } from "../../../components/Form";
 import {
-  addCalendarEventToLocalStorage,
   getUtcDateStingFromLocalDateString,
   getUtcTimeStingFromLocalTimeString,
   getLocalDateStringFromUtcDateString,
   getLocalTimeStringFromUTtcTimeString,
-  updateCalendarEventsInLocalStorage,
 } from "../../../utils";
+import CalendarContext from "../../../context/CalendarContext";
 
 const AddEvent = (props) => {
   let eventFormRef = null;
+
+  const { addCalendarEvents, updateCalendarEvents } =
+    React.useContext(CalendarContext);
 
   const [formValues, setFormValues] = React.useState({
     title: "",
@@ -61,10 +63,10 @@ const AddEvent = (props) => {
       end_date: getUtcDateStingFromLocalDateString(end_date_string),
       end_time: getUtcTimeStingFromLocalTimeString(end_date_string),
     };
-    if (this.props.event) {
-      updateCalendarEventsInLocalStorage(calendar_event);
+    if (props.event) {
+      updateCalendarEvents(calendar_event);
     } else {
-      addCalendarEventToLocalStorage(calendar_event);
+      addCalendarEvents(calendar_event);
     }
   };
 

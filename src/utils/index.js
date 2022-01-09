@@ -75,6 +75,17 @@ const getLocalTimeStringFromUTtcTimeString = (datetime_string) => {
   return [hours, minutes, seconds].join(":");
 };
 
+const getRemainingTimeInMicroSeconds = (start_time_string, remind_before) => {
+  let utc_date_object = new Date(`${start_time_string} UTC`);
+  let utc_time_stamp = Number(
+    utc_date_object.setMinutes(
+      utc_date_object.getMinutes() - Number(remind_before)
+    )
+  );
+  let local_timestamp = Number(new Date());
+  return utc_time_stamp - local_timestamp;
+};
+
 export {
   addCalendarEventToLocalStorage,
   getCalendarEventsFromLocalStorage,
@@ -84,5 +95,6 @@ export {
   getUtcDateStingFromLocalDateString,
   getLocalDateStringFromUtcDateString,
   getLocalTimeStringFromUTtcTimeString,
+  getRemainingTimeInMicroSeconds,
   removeCalendarEventsFromLocalStorage,
 };
