@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  justify-content: flex-start;
+  justify-content: center;
   height: 790px;
   padding-top: 56px;
 }
@@ -53,4 +53,9 @@
 
 .date-disabled {
   background: #F8F8F8;
+}
+
+.date-container .date-render-container {
+  width: 100%;
+  margin-top: 12px;
 }

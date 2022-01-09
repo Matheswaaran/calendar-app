@@ -9,6 +9,7 @@ import {
   getNextMonthAndYear,
 } from "../components/calendar/utils";
 import CalendarContext from "../context/CalendarContext";
+import { exportCsvFile } from "../utils/csv";
 
 const Layout = (props) => {
   const { month, setMonth, year, setYear, resetToToday } =
@@ -55,7 +56,10 @@ const Layout = (props) => {
         </div>
         <div className="topbar-actions">
           <button className="calendar-add-event-btn">Add Event</button>
-          <button className="calendar-export-btn">
+          <button
+            className="calendar-export-btn"
+            onClick={() => exportCsvFile()}
+          >
             <img
               src={ExportIcon}
               alt="Settings"

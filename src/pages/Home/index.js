@@ -5,6 +5,7 @@ import CalendarContext from "../../context/CalendarContext";
 import AddEvent from "./AddEvent";
 import ViewEvent from "./ViewEvent";
 import Remainder from "../../components/Remainder";
+import { getRandomColor } from "../../utils/colors";
 
 const Home = (props) => {
   const { month, year, calendarEvents } = React.useContext(CalendarContext);
@@ -45,18 +46,12 @@ const Home = (props) => {
       }
     });
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="calendar-event-container">
         {events_in_date.map((calendar_event, i) => (
           <div
             key={i}
             onClick={() => openViewCalendarEventModal(calendar_event)}
+            className={`calendar-event ${getRandomColor()}`}
           >
             {calendar_event.title}
           </div>
