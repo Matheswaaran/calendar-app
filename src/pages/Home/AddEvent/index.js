@@ -7,6 +7,9 @@ import {
   addCalendarEventToLocalStorage,
   getUtcDateStingFromLocalDateString,
   getUtcTimeStingFromLocalTimeString,
+  getLocalDateStringFromUtcDateString,
+  getLocalTimeStringFromUTtcTimeString,
+  updateCalendarEventsInLocalStorage,
 } from "../../../utils";
 
 const AddEvent = (props) => {
@@ -25,7 +28,15 @@ const AddEvent = (props) => {
 
   React.useEffect(() => {
     if (props.event) {
-      setFormValues({ ...props.event });
+      let start_date_utc_string = `${props.event.start_date} ${props.event.start_time}`;
+      let end_date_utc_string = `${props.event.end_date} ${props.event.end_time}`;
+      setFormValues({
+        ...props.event,
+        start_date: getLocalDateStringFromUtcDateString(start_date_utc_string),
+        start_time: getLocalTimeStringFromUTtcTimeString(start_date_utc_string),
+        end_date: getLocalDateStringFromUtcDateString(end_date_utc_string),
+        end_time: getLocalTimeStringFromUTtcTimeString(end_date_utc_string),
+      });
     } else {
       setFormValues({
         title: "",
@@ -50,7 +61,11 @@ const AddEvent = (props) => {
       end_date: getUtcDateStingFromLocalDateString(end_date_string),
       end_time: getUtcTimeStingFromLocalTimeString(end_date_string),
     };
-    addCalendarEventToLocalStorage(calendar_event);
+    if (this.props.event) {
+      updateCalendarEventsInLocalStorage(calendar_event);
+    } else {
+      addCalendarEventToLocalStorage(calendar_event);
+    }
   };
 
   const validateAddEventFormFields = (
