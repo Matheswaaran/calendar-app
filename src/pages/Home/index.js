@@ -22,6 +22,12 @@ const Home = (props) => {
     setModalOpen(true);
   };
 
+  const onCloseModal = () => {
+    setViewModalOpen(false);
+    setModalOpen(false);
+    setSelectedEvent(null);
+  };
+
   const renderEventsInCalendar = (date) => {
     let events_in_date = [];
     calendarEvents.forEach((calendar_event, i) => {
@@ -74,6 +80,7 @@ const Home = (props) => {
         <AddEvent
           open={isModalOpen}
           setOpen={setModalOpen}
+          onCloseModal={onCloseModal}
           event={selectedEvent}
         />
       )}
@@ -82,6 +89,7 @@ const Home = (props) => {
           open={isViewModalOpen}
           setOpen={setViewModalOpen}
           event={selectedEvent}
+          onCloseModal={onCloseModal}
           onEditEvent={() => onEditEvent()}
         />
       )}

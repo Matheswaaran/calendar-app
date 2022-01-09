@@ -106,7 +106,7 @@ const AddEvent = (props) => {
     <MainModal
       title={props.event ? "Update Event" : "Add Event"}
       visible={props.open}
-      onClose={() => props.setOpen(false)}
+      onClose={() => props.onCloseModal()}
       renderFooter={() => (
         <div className="form-actions">
           <button
@@ -117,11 +117,11 @@ const AddEvent = (props) => {
               )
             }
           >
-            {props.event ? "Save" : "Add"}
+            {props.event ? "Save Event" : "Add Event"}
           </button>
           <button
             className="form-actions-cancel-btn"
-            onClick={() => props.setOpen(false)}
+            onClick={() => props.onCloseModal()}
           >
             Cancel
           </button>
@@ -145,15 +145,37 @@ const AddEvent = (props) => {
                 textArea={true}
               />
               <FormInput field="location" label="Location" />
-              <FormInput field="start_date" label="Start Date" type="date" />
-              <FormInput field="start_time" label="Start time" type="time" />
-              <FormInput field="end_date" label="End Date" type="date" />
-              <FormInput field="end_time" label="End time" type="time" />
-              <FormInput
-                field="remind_before"
-                label="Remind Before"
-                type="number"
-              />
+              <div className="form-multiple-input-container">
+                <div className="form-multiple-input">
+                  <FormInput
+                    field="start_date"
+                    label="Start Date"
+                    type="date"
+                  />
+                </div>
+                <div className="form-multiple-input">
+                  <FormInput
+                    field="start_time"
+                    label="Start time"
+                    type="time"
+                  />
+                </div>
+              </div>
+              <div className="form-multiple-input-container">
+                <div className="form-multiple-input">
+                  <FormInput field="end_date" label="End Date" type="date" />
+                </div>
+                <div className="form-multiple-input">
+                  <FormInput field="end_time" label="End time" type="time" />
+                </div>
+              </div>
+              <div>
+                <FormInput
+                  field="remind_before"
+                  label="Remind Before"
+                  type="number"
+                />
+              </div>
             </React.Fragment>
           )}
         </Form>
