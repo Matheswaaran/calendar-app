@@ -3,19 +3,14 @@ import "./index.css";
 import Calendar from "../../components/calendar";
 import CalendarContext from "../../context/CalendarContext";
 import AddEvent from "./AddEvent";
-import { getCalendarEventsFromLocalStorage } from "../../utils";
 import ViewEvent from "./ViewEvent";
+import Remainder from "../../components/Remainder";
 
 const Home = (props) => {
-  const { month, year } = React.useContext(CalendarContext);
+  const { month, year, calendarEvents } = React.useContext(CalendarContext);
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isViewModalOpen, setViewModalOpen] = React.useState(false);
   const [selectedEvent, setSelectedEvent] = React.useState(null);
-  const [calendarEvents, setCalendarEvents] = React.useState([]);
-
-  React.useEffect(() => {
-    setCalendarEvents(getCalendarEventsFromLocalStorage());
-  }, []);
 
   const openViewCalendarEventModal = (calendar_event) => {
     setSelectedEvent(calendar_event);
@@ -66,6 +61,7 @@ const Home = (props) => {
 
   return (
     <div className="home-container">
+      <Remainder />
       <Calendar
         month={month}
         year={year}
