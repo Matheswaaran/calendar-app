@@ -21,3 +21,44 @@
 .add-event-fab-btn:hover {
   transform: rotate(90deg);
 }
+
+.calendar-event-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.calendar-event-container .calendar-event {
+  width: 100%;
+  border-radius: 6px;
+  border-width: 0 0 0 5px;
+  border-style: solid;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  padding: 5px 10px;
+}
+
+.green {
+  background: #E2FBD7;
+  border-color: #34B53A;
+}
+
+.blue {
+  background: #CCF8FE;
+  border-color: #02A0FC;
+}
+
+.yellow {
+  background: #FFF5CC;
+  border-color: #FFB200;
+}
+
+.purple {
+  background: #DAD7FE;
+  border-color: #4339F2;
+}
