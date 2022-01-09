@@ -22,18 +22,40 @@ const setCalendarEventsToLocalStorage = (calendar_events) => {
   localStorage.setItem("calendarEvents", JSON.stringify(calendar_events));
 };
 
-const updateCalendarEventsInLocalStorage = (calendar_events) => {};
+const updateCalendarEventsInLocalStorage = (calendar_event) => {
+  console.log(calendar_event);
+};
 
 const getUtcDateStingFromLocalDateString = (datetime_string) => {
   let js_date_object = new Date(datetime_string);
-  return `${js_date_object.getUTCFullYear()}-${
-    js_date_object.getUTCMonth() + 1
-  }-${js_date_object.getUTCDate()}`;
+  let utc_year = js_date_object.getUTCFullYear();
+  let utc_month = `${js_date_object.getUTCMonth() + 1}`.padStart(2, "0");
+  let utc_date = `${js_date_object.getUTCDate()}`.padStart(2, "0");
+  return [utc_year, utc_month, utc_date].join("-");
 };
 
-const getUtcTimeStingFromLocalTimeString = (datetime_string) => {
-  let js_date_object = new Date(datetime_string);
-  return `${js_date_object.getUTCHours()}:${js_date_object.getUTCMinutes()}:${js_date_object.getUTCSeconds()}`;
+const getUtcTimeStingFromLocalTimeString = (time_string) => {
+  let js_date_object = new Date(time_string);
+  let utc_hours = `${js_date_object.getUTCHours()}`.padStart(2, "0");
+  let utc_minutes = `${js_date_object.getUTCMinutes() + 1}`.padStart(2, "0");
+  let utc_seconds = `${js_date_object.getUTCSeconds()}`.padStart(2, "0");
+  return [utc_hours, utc_minutes, utc_seconds].join(":");
+};
+
+const getLocalDateStringFromUtcDateString = (datetime_string) => {
+  let utc_date_object = new Date(`${datetime_string} UTC`);
+  let year = utc_date_object.getFullYear();
+  let month = `${utc_date_object.getMonth() + 1}`.padStart(2, "0");
+  let date = `${utc_date_object.getDate()}`.padStart(2, "0");
+  return [year, month, date].join("-");
+};
+
+const getLocalTimeStringFromUTtcTimeString = (datetime_string) => {
+  let utc_date_object = new Date(`${datetime_string} UTC`);
+  let hours = `${utc_date_object.getHours()}`.padStart(2, "0");
+  let minutes = `${utc_date_object.getMinutes() + 1}`.padStart(2, "0");
+  let seconds = `${utc_date_object.getSeconds()}`.padStart(2, "0");
+  return [hours, minutes, seconds].join(":");
 };
 
 export {
@@ -43,4 +65,6 @@ export {
   setCalendarEventsToLocalStorage,
   getUtcTimeStingFromLocalTimeString,
   getUtcDateStingFromLocalDateString,
+  getLocalDateStringFromUtcDateString,
+  getLocalTimeStringFromUTtcTimeString,
 };
