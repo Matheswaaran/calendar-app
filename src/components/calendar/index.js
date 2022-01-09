@@ -10,14 +10,28 @@ const Calendar = (props) => {
     setDates(getCalenderDates(props.month, props.year));
   }, [props]);
 
+  const isDateToday = (date) => {
+    const today = new Date();
+    return (
+      date.date === today.getDate() &&
+      date.month === today.getMonth() &&
+      date.year === today.getFullYear()
+    );
+  };
+
   return (
     <div className="calendar-container">
       {dates.map((date, i) => (
-        <div className="date-container" key={i}>
+        <div
+          className={`date-container ${date.disabled ? "date-disabled" : ""}`}
+          key={i}
+        >
           <span className="day-of-week">
             {getDayOfWeekText(date.day_of_week).small}
           </span>
-          <span>{date.date}</span>
+          <div className={`date ${isDateToday(date) ? "today" : ""}`}>
+            <span>{date.date}</span>
+          </div>
           <div className="date-render-container">
             {props.renderDateCell
               ? props.renderDateCell(new Date(date.year, date.month, date.date))

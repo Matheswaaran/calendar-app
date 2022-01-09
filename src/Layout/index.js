@@ -1,9 +1,8 @@
 import React from "react";
 import "./index.css";
-import SettingsIcon from "../assets/img/header/settings-icon.png";
-import AppIcon from "../assets/img/header/app-icon.webp";
-import LeftArrowIcon from "../assets/img/header/left-arrow.png";
-import RightArrowIcon from "../assets/img/header/right-arrow.png";
+import ExportIcon from "../assets/img/header/export.svg";
+import LeftArrowIcon from "../assets/img/header/left-arrow.svg";
+import RightArrowIcon from "../assets/img/header/right-arrow.svg";
 import {
   getMonthText,
   getPreviousMonthAndYear,
@@ -12,7 +11,8 @@ import {
 import CalendarContext from "../context/CalendarContext";
 
 const Layout = (props) => {
-  const { month, setMonth, year, setYear } = React.useContext(CalendarContext);
+  const { month, setMonth, year, setYear, resetToToday } =
+    React.useContext(CalendarContext);
 
   const goToPreviousMonth = () => {
     const { month: previous_month, year: previous_year } =
@@ -34,8 +34,9 @@ const Layout = (props) => {
     <div className="layout-container">
       <div className="layout-topbar">
         <div className="app-name-container">
-          <img src={AppIcon} alt="Calendar App" className="app-icon" />
-          Calendar App
+          <button className="calendar-today-btn" onClick={() => resetToToday()}>
+            Today
+          </button>
         </div>
         <div className="topbar-content">
           <img
@@ -53,7 +54,16 @@ const Layout = (props) => {
           />
         </div>
         <div className="topbar-actions">
-          <img src={SettingsIcon} alt="Settings" className="settings-icon" />
+          <button className="calendar-add-event-btn">Add Event</button>
+          <button className="calendar-export-btn">
+            <img
+              src={ExportIcon}
+              alt="Settings"
+              className="left-arrow-icon"
+              onClick={goToPreviousMonth}
+            />
+            Export
+          </button>
         </div>
       </div>
       <div className="layout-content">{props.children}</div>
