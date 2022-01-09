@@ -68,6 +68,7 @@ const AddEvent = (props) => {
     } else {
       addCalendarEvents(calendar_event);
     }
+    props.onCloseModal();
   };
 
   const validateAddEventFormFields = (
