@@ -10,8 +10,57 @@
   align-items: center;
   justify-content: space-between;
   height: 4rem;
-  border-bottom: 1px solid #9EACBE;
   padding: 0 16px;
+}
+
+.layout-topbar .calendar-today-btn {
+  background: #47A1F8;
+  border: 1px solid #47A1F8;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 8px 29px;
+  cursor: pointer;
+}
+
+.layout-topbar .calendar-add-event-btn {
+  background: #47A1F8;
+  border: 1px solid #47A1F8;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.layout-topbar .calendar-export-btn {
+  background: #FFFFFF;
+  border: 1px solid #47A1F8;
+  border-radius: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #47A1F8;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.layout-topbar .calendar-export-btn img {
+  height: 17px;
+  width: 17px;
+  margin-right: 8px;
 }
 
 .layout-topbar .settings-icon {
@@ -19,13 +68,6 @@
   width: 30px;
   object-fit: cover;
   cursor: pointer;
-}
-
-.layout-topbar .app-icon {
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
-  margin-right: 12px;
 }
 
 .layout-topbar .app-name-container {
@@ -45,21 +87,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 29px;
+  text-align: center;
+  color: #000000;
 }
 
 .topbar-content .left-arrow-icon, .topbar-content .right-arrow-icon {
-  height: 30px;
-  width: 30px;
-  object-fit: cover;
   cursor: pointer;
 }
 
 .topbar-content .left-arrow-icon {
-  margin-right: 8px;
+  margin-right: 16px;
 }
 
 .topbar-content .right-arrow-icon {
-  margin-left: 8px;
+  margin-left: 16px;
 }
 
 .layout-topbar .topbar-actions {

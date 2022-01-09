@@ -32,6 +32,11 @@ const CalendarProvider = (props) => {
     setCalendarEvents(calendar_events);
   };
 
+  const resetToToday = () => {
+    setMonth(new Date().getMonth());
+    setYear(new Date().getFullYear());
+  };
+
   return (
     <CalendarContext.Provider
       value={{
@@ -43,6 +48,7 @@ const CalendarProvider = (props) => {
         addCalendarEvents,
         updateCalendarEvents,
         deleteCalendarEvents,
+        resetToToday,
       }}
     >
       {props.children}

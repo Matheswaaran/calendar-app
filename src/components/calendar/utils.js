@@ -11,6 +11,11 @@ const getCalenderDates = (month, year) => {
 
   let days_to_add_before = getDatesToAddBefore(days[0], year, month);
 
+  days_to_add_before = days_to_add_before.map((date) => ({
+    ...date,
+    disabled: true,
+  }));
+
   let remaining_days_to_add =
     7 - ((days_to_add_before.length + days.length) % 7);
 
@@ -19,6 +24,11 @@ const getCalenderDates = (month, year) => {
     year,
     month
   );
+
+  days_to_add_after = days_to_add_after.map((date) => ({
+    ...date,
+    disabled: true,
+  }));
 
   return [...days_to_add_before, ...days, ...days_to_add_after];
 };
