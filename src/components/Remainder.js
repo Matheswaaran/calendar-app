@@ -25,6 +25,7 @@ const Remainder = (props) => {
       }
     });
     setTimeoutIds(new_timeOutIds);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calendarEvents]);
 
   return null;
