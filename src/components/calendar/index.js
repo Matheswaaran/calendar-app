@@ -30,6 +30,18 @@ const Calendar = (props) => {
             {getDayOfWeekText(date.day_of_week).small}
           </span>
           <div className={`date ${isDateToday(date) ? "today" : ""}`}>
+            {props.addEventOnDate && (
+              <button
+                className="add-event-btn"
+                onClick={() =>
+                  props.addEventOnDate(
+                    new Date(date.year, date.month, date.date)
+                  )
+                }
+              >
+                +
+              </button>
+            )}
             <span>{date.date}</span>
           </div>
           <div className="date-render-container">
@@ -47,12 +59,14 @@ Calendar.defaultProps = {
   month: new Date().getMonth(),
   year: new Date().getFullYear(),
   renderDateCell: undefined,
+  addEventOnDate: undefined,
 };
 
 Calendar.propTypes = {
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
   renderDateCell: PropTypes.func,
+  addEventOnDate: PropTypes.func,
 };
 
 export default Calendar;

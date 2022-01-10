@@ -86,6 +86,13 @@ const getRemainingTimeInMicroSeconds = (start_time_string, remind_before) => {
   return utc_time_stamp - local_timestamp;
 };
 
+const getDateStringFromObject = (date_object) => {
+  let year = date_object.getFullYear();
+  let month = `${date_object.getMonth() + 1}`.padStart(2, "0");
+  let date = `${date_object.getDate()}`.padStart(2, "0");
+  return [year, month, date].join("-");
+};
+
 export {
   addCalendarEventToLocalStorage,
   getCalendarEventsFromLocalStorage,
@@ -97,4 +104,5 @@ export {
   getLocalTimeStringFromUTtcTimeString,
   getRemainingTimeInMicroSeconds,
   removeCalendarEventsFromLocalStorage,
+  getDateStringFromObject,
 };

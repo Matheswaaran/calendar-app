@@ -12,6 +12,7 @@ const Home = (props) => {
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isViewModalOpen, setViewModalOpen] = React.useState(false);
   const [selectedEvent, setSelectedEvent] = React.useState(null);
+  const [selectedDate, setSelectedDate] = React.useState(null);
 
   const openViewCalendarEventModal = (calendar_event) => {
     setSelectedEvent(calendar_event);
@@ -27,6 +28,12 @@ const Home = (props) => {
     setViewModalOpen(false);
     setModalOpen(false);
     setSelectedEvent(null);
+    setSelectedDate(null);
+  };
+
+  const openAddEventModalWithDate = (date) => {
+    setSelectedDate(date);
+    setModalOpen(true);
   };
 
   const renderEventsInCalendar = (date) => {
@@ -68,6 +75,7 @@ const Home = (props) => {
         month={month}
         year={year}
         renderDateCell={renderEventsInCalendar}
+        addEventOnDate={openAddEventModalWithDate}
       />
       <button className="add-event-fab-btn" onClick={() => setModalOpen(true)}>
         +
@@ -78,6 +86,7 @@ const Home = (props) => {
           setOpen={setModalOpen}
           onCloseModal={onCloseModal}
           event={selectedEvent}
+          selectedDate={selectedDate}
         />
       )}
       {isViewModalOpen && (
