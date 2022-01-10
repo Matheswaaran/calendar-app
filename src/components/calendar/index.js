@@ -26,7 +26,7 @@ const Calendar = (props) => {
           className={`date-container ${date.disabled ? "date-disabled" : ""}`}
           key={i}
         >
-          {i < 6 && (
+          {i < 7 && (
             <span className="day-of-week">
               {getDayOfWeekText(date.day_of_week).small}
             </span>
