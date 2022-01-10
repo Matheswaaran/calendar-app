@@ -22,7 +22,7 @@ const DeleteModal = (props) => {
         </button>
         <button
           className="form-actions-cancel-btn"
-          onClick={() => props.setOpen(true)}
+          onClick={() => props.setOpen(false)}
         >
           Cancel
         </button>
