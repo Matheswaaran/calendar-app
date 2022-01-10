@@ -7,7 +7,7 @@ const EventsList = (props) => {
   return (
     <div className="events-list-container">
       <div className="header-container">
-        <span>11</span>
+        <span>{props.date}</span>
         <img
           src={CloseIcon}
           alt="close modal"
@@ -32,6 +32,7 @@ EventsList.defaultProps = {
   eventsInDate: [],
   open: false,
   setOpen: () => {},
+  date: 0,
 };
 
 EventsList.propTypes = {
@@ -39,6 +40,7 @@ EventsList.propTypes = {
   eventsInDate: PropTypes.array.isRequired,
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
+  date: PropTypes.number.isRequired,
 };
 
 export default EventsList;

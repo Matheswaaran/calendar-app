@@ -36,6 +36,7 @@ const RenderDate = (props) => {
           open={openEventsList}
           setOpen={setOpenEventsList}
           openEvent={props.openEvent}
+          date={props.date}
         />
       )}
     </div>
@@ -45,11 +46,13 @@ const RenderDate = (props) => {
 RenderDate.defaultProps = {
   openEvent: () => {},
   eventsInDate: [],
+  date: 0,
 };
 
 RenderDate.propTypes = {
   openEvent: PropTypes.func.isRequired,
   eventsInDate: PropTypes.array.isRequired,
+  date: PropTypes.number.isRequired,
 };
 
 export default RenderDate;
