@@ -11,7 +11,7 @@
   border: none;
   border-radius: 100%;
   outline: none;
-  background-color: #F44336;
+  background-color: #47A1F8;
   transition: .3s;
   font-size: 36px;
   color: #FFF;
@@ -28,6 +28,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 10px;
+  cursor: pointer;
 }
 
 .calendar-event-container .calendar-event {
@@ -41,6 +42,9 @@
   line-height: 20px;
   color: #000000;
   padding: 5px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .green {

@@ -52,6 +52,7 @@ const Home = (props) => {
             key={i}
             onClick={() => openViewCalendarEventModal(calendar_event)}
             className={`calendar-event ${getRandomColor()}`}
+            title={calendar_event.title}
           >
             {calendar_event.title}
           </div>
