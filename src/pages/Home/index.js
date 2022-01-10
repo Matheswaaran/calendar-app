@@ -58,6 +58,7 @@ const Home = (props) => {
           openViewCalendarEventModal(calendar_event)
         }
         eventsInDate={events_in_date}
+        date={date.getDate()}
       />
     );
   };
