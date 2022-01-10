@@ -5,7 +5,6 @@ import CalendarContext from "../../context/CalendarContext";
 import AddEvent from "./AddEvent";
 import ViewEvent from "./ViewEvent";
 import Remainder from "../../components/Remainder";
-import { getRandomColor } from "../../utils/colors";
 import RenderDate from "./RenderDate";
 
 const Home = (props) => {
