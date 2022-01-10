@@ -2,7 +2,7 @@ import React from "react";
 import CalendarContext from "../context/CalendarContext";
 import { getRemainingTimeInMicroSeconds } from "../utils";
 
-const Remainder = (props) => {
+const Reminder = (props) => {
   const { calendarEvents } = React.useContext(CalendarContext);
 
   const [timeOutIds, setTimeoutIds] = React.useState([]);
@@ -31,4 +31,4 @@ const Remainder = (props) => {
   return null;
 };
 
-export default Remainder;
+export default Reminder;
