@@ -170,12 +170,14 @@ const AddEvent = (props) => {
                   <FormInput field="end_time" label="End time" type="time" />
                 </div>
               </div>
-              <div>
-                <FormInput
-                  field="remind_before"
-                  label="Remind Before"
-                  type="number"
-                />
+              <div className="form-multiple-input-container">
+                <div className="form-multiple-input">
+                  <FormInput
+                    field="remind_before"
+                    label="Remind Before"
+                    type="number"
+                  />
+                </div>
               </div>
             </React.Fragment>
           )}
