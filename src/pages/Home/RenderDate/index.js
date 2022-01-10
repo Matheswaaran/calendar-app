@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getRandomColor } from "../../../utils/colors";
 import EventsList from "./EventsList";
 import "./index.css";
 
@@ -14,7 +13,7 @@ const RenderDate = (props) => {
           {i < 2 && (
             <div
               onClick={() => props.openEvent(calendar_event)}
-              className={`calendar-event ${getRandomColor()}`}
+              className={`calendar-event ${calendar_event.color}`}
               title={calendar_event.title}
             >
               {calendar_event.title}
