@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  min-height: 14%;
 }
 
 .date-container .date {
@@ -60,7 +61,7 @@
 
 .date-container .date-render-container {
   width: 100%;
-  margin-top: 12px;
+  margin-top: 6px;
 }
 
 .date-container .add-event-btn {

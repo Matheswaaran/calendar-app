@@ -26,9 +26,11 @@ const Calendar = (props) => {
           className={`date-container ${date.disabled ? "date-disabled" : ""}`}
           key={i}
         >
-          <span className="day-of-week">
-            {getDayOfWeekText(date.day_of_week).small}
-          </span>
+          {i < 6 && (
+            <span className="day-of-week">
+              {getDayOfWeekText(date.day_of_week).small}
+            </span>
+          )}
           <div className={`date ${isDateToday(date) ? "today" : ""}`}>
             {props.addEventOnDate && (
               <button
