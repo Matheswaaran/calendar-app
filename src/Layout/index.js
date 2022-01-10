@@ -55,7 +55,6 @@ const Layout = (props) => {
           />
         </div>
         <div className="topbar-actions">
-          <button className="calendar-add-event-btn">Add Event</button>
           <button
             className="calendar-export-btn"
             onClick={() => exportCsvFile()}
