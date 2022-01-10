@@ -10,6 +10,7 @@ import {
   getLocalTimeStringFromUTtcTimeString,
   getDateStringFromObject,
 } from "../../../utils";
+import { getRandomColor } from "../../../utils/colors";
 import CalendarContext from "../../../context/CalendarContext";
 
 const AddEvent = (props) => {
@@ -84,7 +85,7 @@ const AddEvent = (props) => {
     if (props.event) {
       updateCalendarEvents(calendar_event);
     } else {
-      addCalendarEvents(calendar_event);
+      addCalendarEvents({ ...calendar_event, color: getRandomColor() });
     }
     props.onCloseModal();
   };

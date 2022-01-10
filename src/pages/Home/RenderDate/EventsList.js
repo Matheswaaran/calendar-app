@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CloseIcon from "../../../assets/img/close.svg";
-import { getRandomColor } from "../../../utils/colors";
 
 const EventsList = (props) => {
   return (
@@ -17,7 +16,7 @@ const EventsList = (props) => {
       {props.eventsInDate.map((calendar_event, i) => (
         <div
           onClick={() => props.openEvent(calendar_event)}
-          className={`calendar-event ${getRandomColor()}`}
+          className={`calendar-event ${calendar_event.color}`}
           title={calendar_event.title}
         >
           {calendar_event.title}
