@@ -4,7 +4,7 @@ import Calendar from "../../components/calendar";
 import CalendarContext from "../../context/CalendarContext";
 import AddEvent from "./AddEvent";
 import ViewEvent from "./ViewEvent";
-import Remainder from "../../components/Remainder";
+import Reminder from "../../components/Reminder";
 import RenderDate from "./RenderDate";
 
 const Home = (props) => {
@@ -65,7 +65,7 @@ const Home = (props) => {
 
   return (
     <div className="home-container">
-      <Remainder />
+      <Reminder />
       <Calendar
         month={month}
         year={year}
