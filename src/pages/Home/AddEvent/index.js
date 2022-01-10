@@ -8,6 +8,7 @@ import {
   getUtcTimeStingFromLocalTimeString,
   getLocalDateStringFromUtcDateString,
   getLocalTimeStringFromUTtcTimeString,
+  getDateStringFromObject,
 } from "../../../utils";
 import CalendarContext from "../../../context/CalendarContext";
 
@@ -38,6 +39,22 @@ const AddEvent = (props) => {
         start_time: getLocalTimeStringFromUTtcTimeString(start_date_utc_string),
         end_date: getLocalDateStringFromUtcDateString(end_date_utc_string),
         end_time: getLocalTimeStringFromUTtcTimeString(end_date_utc_string),
+      });
+    } else if (props.selectedDate) {
+      console.log(
+        props.selectedDate,
+        props.selectedDate.toLocaleDateString(),
+        typeof props.selectedDate
+      );
+      setFormValues({
+        title: "",
+        description: "",
+        location: "",
+        start_date: getDateStringFromObject(props.selectedDate),
+        start_time: "",
+        end_date: "",
+        end_time: "",
+        remind_before: "",
       });
     } else {
       setFormValues({

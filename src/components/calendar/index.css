@@ -27,6 +27,9 @@
   text-align: right;
   color: #000000;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .date-container .today span {
@@ -58,4 +61,21 @@
 .date-container .date-render-container {
   width: 100%;
   margin-top: 12px;
+}
+
+.date-container .add-event-btn {
+  color: #34B53A;
+  padding: 4px 8px;
+  border-width: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.date-container:hover .add-event-btn {
+  visibility: visible;
 }
