@@ -68,6 +68,7 @@ const AddEvent = (props) => {
         remind_before: "",
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.event]);
 
   const handleAddEventFormSubmit = (formValues) => {
